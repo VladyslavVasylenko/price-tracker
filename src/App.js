@@ -2,20 +2,29 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const App = () => {
-  const [selectedCryptos, setSelectedCryptos] = useState([
-    "BTCUSDT",
-    "ETHUSDT",
-    "BNBUSDT",
-    "ADAUSDT",
-    "XRPUSDT",
-    "DOGEUSDT",
-    "SOLUSDT",
-    "DOTUSDT",
-    "MATICUSDT",
-    "SHIBUSDT",
-  ]);
+  const [selectedCryptos, setSelectedCryptos] = useState(() => {
+    const savedCryptos = localStorage.getItem("selectedCryptos");
+    return savedCryptos ? JSON.parse(savedCryptos) : [
+      "BTCUSDT",
+      "ETHUSDT",
+      "BNBUSDT",
+      "ADAUSDT",
+      "XRPUSDT",
+      "DOGEUSDT",
+      "SOLUSDT",
+      "DOTUSDT",
+      "MATICUSDT",
+      "SHIBUSDT",
+    ];
+  });
+
   const [prices, setPrices] = useState({});
   const [error, setError] = useState("");
+
+  // Сохранение списка криптовалют в localStorage
+  useEffect(() => {
+    localStorage.setItem("selectedCryptos", JSON.stringify(selectedCryptos));
+  }, [selectedCryptos]);
 
   // Функция для получения цен
   const fetchPrices = async () => {
@@ -40,12 +49,12 @@ const App = () => {
 
   useEffect(() => {
     fetchPrices();
-  }, [fetchPrices]);
+  }, []);
 
-  // Обновление цен каждые 10 секунд
+  // Обновление цен каждые 5 секунд
   useEffect(() => {
-    fetchPrices(); // Получение цен при загрузке
-    const interval = setInterval(fetchPrices, 10000); // Обновление каждые 10 секунд
+    fetchPrices();
+    const interval = setInterval(fetchPrices, 5000);
     return () => clearInterval(interval);
   }, [selectedCryptos]);
 
@@ -79,7 +88,7 @@ const App = () => {
         padding: "20px",
       }}
     >
-      <h1 style={{ color: "#f3ba2f" }}>Price Tracker with Binance </h1>
+      <h1 style={{ color: "#f3ba2f" }}>Binance Price Tracker</h1>
 
       {error && <p style={{ color: "#ff4d4f" }}>{error}</p>}
 
