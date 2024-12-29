@@ -41,7 +41,6 @@ const App = () => {
   useEffect(() => {
     fetchPrices();
   }, [fetchPrices]);
-  
 
   // Обновление цен каждые 5 секунд
   useEffect(() => {
@@ -71,23 +70,48 @@ const App = () => {
   };
 
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}>
-      <h1>Binance Price Tracker</h1>
+    <div
+      style={{
+        fontFamily: "Arial, sans-serif",
+        backgroundColor: "#121212",
+        color: "#e0e0e0",
+        minHeight: "100vh",
+        padding: "20px",
+      }}
+    >
+      <h1 style={{ color: "#f3ba2f" }}>Binance Price Tracker</h1>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p style={{ color: "#ff4d4f" }}>{error}</p>}
 
-      <h2>Selected Cryptocurrencies</h2>
-      <ul>
+      <h2 style={{ borderBottom: "1px solid #333", paddingBottom: "10px" }}>
+        Selected Cryptocurrencies
+      </h2>
+      <ul style={{ listStyleType: "none", padding: 0 }}>
         {selectedCryptos.map((symbol) => (
-          <li key={symbol}>
-            {symbol}: {prices[symbol] || "Loading..."} USDT
+          <li
+            key={symbol}
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: "10px",
+              padding: "10px",
+              border: "1px solid #333",
+              borderRadius: "5px",
+              backgroundColor: "#1e1e1e",
+            }}
+          >
+            <span>
+              {symbol}: {prices[symbol] || "Loading..."} USDT
+            </span>
             <button
               style={{
                 marginLeft: "10px",
-                color: "red",
+                color: "#ff4d4f",
                 border: "none",
                 background: "none",
                 cursor: "pointer",
+                fontWeight: "bold",
               }}
               onClick={() => removeCrypto(symbol)}
             >
@@ -97,7 +121,9 @@ const App = () => {
         ))}
       </ul>
 
-      <h2>Add Cryptocurrency</h2>
+      <h2 style={{ borderBottom: "1px solid #333", paddingBottom: "10px" }}>
+        Add Cryptocurrency
+      </h2>
       <input
         type="text"
         placeholder="Enter symbol (e.g., LTCUSDT)"
@@ -106,6 +132,14 @@ const App = () => {
             addCrypto(e.target.value.toUpperCase());
             e.target.value = "";
           }
+        }}
+        style={{
+          padding: "10px",
+          border: "1px solid #333",
+          borderRadius: "5px",
+          backgroundColor: "#1e1e1e",
+          color: "#e0e0e0",
+          width: "100%",
         }}
       />
     </div>
