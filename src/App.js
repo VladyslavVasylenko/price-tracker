@@ -42,10 +42,10 @@ const App = () => {
     fetchPrices();
   }, [fetchPrices]);
 
-  // Обновление цен каждые 5 секунд
+  // Обновление цен каждые 10 секунд
   useEffect(() => {
     fetchPrices(); // Получение цен при загрузке
-    const interval = setInterval(fetchPrices, 5000); // Обновление каждые 5 секунд
+    const interval = setInterval(fetchPrices, 10000); // Обновление каждые 10 секунд
     return () => clearInterval(interval);
   }, [selectedCryptos]);
 
@@ -79,7 +79,7 @@ const App = () => {
         padding: "20px",
       }}
     >
-      <h1 style={{ color: "#f3ba2f" }}>Binance Price Tracker</h1>
+      <h1 style={{ color: "#f3ba2f" }}>Price Tracker with Binance </h1>
 
       {error && <p style={{ color: "#ff4d4f" }}>{error}</p>}
 
