@@ -88,7 +88,7 @@ const App = () => {
         padding: "20px",
       }}
     >
-      <h1 style={{ color: "#f3ba2f" }}>Binance Price Tracker</h1>
+      <h1 style={{ color: "#f3ba2f" }}>Price Tracker with Binance</h1>
 
       {error && <p style={{ color: "#ff4d4f" }}>{error}</p>}
 
