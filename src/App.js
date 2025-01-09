@@ -148,7 +148,8 @@ const App = () => {
           borderRadius: "5px",
           backgroundColor: "#1e1e1e",
           color: "#e0e0e0",
-          width: "100%",
+          margin: 0 auto,
+          width: "70%",
         }}
       />
     </div>
