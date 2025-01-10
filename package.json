@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "npm run build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -36,6 +36,24 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
-  }
-
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "author": "vladslav_vasylenko",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VladyslavVasylenko/price-tracker.git"
+  },
+  "keywords": [
+    "price",
+    "tracker",
+    "price-tracker",
+    "ecommerce",
+    "monitoring"
+  ],
+  "bugs": {
+    "url": "https://github.com/VladyslavVasylenko/price-tracker/issues"
+  },
+  "homepage": "https://github.com/VladyslavVasylenko/price-tracker#readme"
 }
